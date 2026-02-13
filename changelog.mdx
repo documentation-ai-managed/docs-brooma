@@ -1,0 +1,141 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and new features released in Brooma.
+---
+
+## Recent Updates
+
+Stay informed about the latest releases. Brooma continuously improves service management for legal teams, contact centers, and real estate companies.
+
+<Callout kind="info">
+  Check the [GitHub releases page](https://github.com/example/brooma/releases) for full release notes and download links.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time notifications for task deadlines in legal case management.
+- Introduced multi-channel support for contact centers, including WhatsApp integration.
+- Enhanced real estate platform with resident portal for self-service requests.
+
+## Improvements
+
+- Optimized dashboard loading times by `>30%`.
+- Improved mobile responsiveness for on-the-go executors.
+
+## Bug Fixes
+
+- Fixed synchronization issues between web and mobile apps.
+- Resolved deadline alert failures during high load.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New analytics dashboard for tracking executor workload and SLA compliance.
+- Bulk task assignment for managers in service divisions.
+
+## Bug Fixes
+
+- Corrected data import errors from external judicial databases.
+- Fixed chat history persistence across messaging platforms.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Initial Release
+
+- Core service management platform for legal firms, contact centers, and real estate.
+- Task distribution, deadline tracking, and reporting tools.
+- Mobile-first design for executors.
+
+## Breaking Changes
+
+- Updated API endpoints to version 1. See migration guide below.
+
+</Update>
+
+## Migration Guide
+
+Follow these steps to upgrade to the latest version.
+
+<Steps>
+  <Step title="Backup Data" icon="database">
+
+    Create a full backup of your Brooma instance.
+
+````bash
+brooma backup --path=/backups/latest
+````
+
+  </Step>
+  <Step title="Update Package" icon="download">
+
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install brooma@latest
+````
+      </Tab>
+      <Tab title="Docker" icon="docker">
+````bash
+docker pull brooma/brooma:latest
+docker-compose up -d
+````
+      </Tab>
+    </Tabs>
+
+  </Step>
+  <Step title="Run Migrations" icon="settings">
+
+    Apply database migrations.
+
+````bash
+brooma migrate --env=production
+````
+
+  </Step>
+  <Step title="Verify" icon="check-circle">
+
+    Test key features like task assignment and notifications.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  For v1.2.0, update your webhook URLs to use `https://api.example.com/v1/webhooks`.
+</Callout>
+
+## Upcoming Features
+
+Watch for these enhancements in future releases.
+
+<Columns cols={3}>
+  <Card title="AI Task Prioritization" icon="zap" href="#">
+    Automatically rank tasks based on urgency and executor skills.
+  </Card>
+  <Card title="Advanced Reporting" icon="bar-chart-3" href="#">
+    Customizable reports with export to PDF and Excel.
+  </Card>
+  <Card title="Integrations" icon="plug" href="#">
+    Native connectors for CRM systems and calendars.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Migration Notes" default-open="false">
+
+If you encounter issues during upgrade:
+
+| Issue | Solution |
+|-------|----------|
+| Database lock | Run `brooma migrate --force` |
+| API incompatibility | Update client SDK to v1.2.0 |
+| Notification failures | Restart queue workers |
+
+For custom configurations, review `config/migration-notes.md`.
+
+</Expandable>
